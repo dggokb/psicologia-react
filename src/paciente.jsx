@@ -1,43 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { usePacienteData } from "./hooks/usePacienteData";
+import PacienteTestePost from "./pacienteTestePost";
 
 export default function Paciente() { 
 
-    const API_URL = 'http://localhost:8080/paciente'
-
-    const config = {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        data: {},
-      };
-    
-    const fecthData = async () => {
-        const response = await axios.get(API_URL, config);            
-    
-        return response;    
-    }
-
-    const { isInitialLoading, isError, data, error, refetch, isFetching } =
-            useQuery({
-            queryKey: ['todos'],
-            queryFn: fecthData,
-            refetchOnWindowFocus: false,
-            enabled: false,
-        })
+  const { isInitialLoading, isError, data, error, refetch } = usePacienteData();
   
   return (  
     <div>    
-        <button onClick={() => refetch()}>Fetch Todos</button>
+        <button onClick={() => refetch()}>Obter Todos</button>
         {data?.data ? (
         <>
           <ul>
-            {data?.data.map((dado) => (
-              <><p>Nome: {dado.nome}</p>
-              <p>Endereço: {dado.endereco}</p>
-              <p>Tipo: {dado.tipo}</p>
-              <span>---------------------</span></>
+            {data?.data.map((dado) => (              
+              <div key={dado.id}>
+                <p>Nome: {dado.nome}</p>
+                <p>Endereço: {dado.endereco}</p>
+                <p>Data de inicio: {dado.dataDeInicio}</p>
+                
+                <p>Tipo: {dado.tipo}</p>
+                <span>---------------------</span>
+              </div>
             ))}
           </ul>
         </>
@@ -48,7 +30,6 @@ export default function Paciente() {
       ) : (
         <span>Not ready ...</span>
       )}
-
     </div>
   )
 }

@@ -5,14 +5,17 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query'
 import Paciente from './paciente';
+import PacienteTestePost from './pacienteTestePost';
 
 
 const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}
+    contextSharing={true}>
       <Paciente />
+      <PacienteTestePost />
     </QueryClientProvider>
   )
 }
