@@ -4,18 +4,19 @@ import axios from "axios";
 const API_URL = 'http://localhost:8080/paciente'
 
 const config = {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data: {},
-  };
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  data: {},
+};
 
-export function usePacienteData(){
-    return useQuery({
-      queryFn: async () => await axios.get(API_URL, config),
-      queryKey: ['paciente-data'],
-      refetchOnWindowFocus: false
+export function usePacienteData() {
+  return useQuery({
+    queryFn: async () => await axios.get(API_URL, config),
+    queryKey: ['paciente-data'],
+    refetchOnWindowFocus: false,
+    enabled: false
   })
 }
 
