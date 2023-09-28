@@ -1,10 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
-import PacienteTesteSelect from "./selectDeTipoDePaciente";
-import SelectDeTipoDePaciente from "./selectDeTipoDePaciente";
 import SelectDeMeses from "./selectDeMeses";
+import SelectDeTipoDePaciente from "./selectDeTipoDePaciente";
 
 export default function PacienteTestePost() {
 
@@ -57,14 +55,17 @@ export default function PacienteTestePost() {
         </div>
         <div>
           <span>Mês: </span>
-          <SelectDeMeses selectedValue={tipo} onChange={setMes} />
+          <SelectDeMeses selectedValue={mes} onChange={setMes} />
+          <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
         </div>
         <div>
-          <span>Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
-        </div>
-        <div>
-          <span>Tipo: </span>
-          <SelectDeTipoDePaciente selectedValue={tipo} onChange={setTipo} />
+          <div class="row">
+            <span>Tipo: </span>
+            <SelectDeTipoDePaciente
+              selectedValue={tipo}
+              onChange={setTipo}
+            />
+          </div>
         </div>
         <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
       </form>

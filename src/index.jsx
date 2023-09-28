@@ -10,6 +10,7 @@ import PacienteGet from './components/pacienteGet';
 
 
 
+
 const queryClient = new QueryClient()
 
 export default function App() {
