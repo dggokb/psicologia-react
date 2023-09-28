@@ -1,8 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
+import PacienteTesteSelect from './pacienteTesteSelect';
 
-export default function PacienteTestePost() { 
+export default function PacienteTestePost() {
 
   const [nome, setNome] = useState();
   const [endereco, setEndereco] = useState();
@@ -10,12 +11,11 @@ export default function PacienteTestePost() {
   const [valorPorSessao, setValorPorSessao] = useState();
   const [mes, setMes] = useState();
   const [ano, setAno] = useState();
-  const [tipo, setTipo] = useState();
+  const [tipo, setTipo] = useState();  
 
-  const mutation = useMutation(
-    (novoPaciente) => {
-      return axios.post("http://localhost:8080/paciente", novoPaciente);
-    },
+  const mutation = useMutation((dadosParaCriacao) => {
+    return axios.post("http://localhost:8080/paciente", dadosParaCriacao);
+  },
     {
       onSuccess: () => {
         queryClient.invalidateQueries('paciente-data');
@@ -25,7 +25,7 @@ export default function PacienteTestePost() {
 
   const criarPaciente = (e) => {
     e.preventDefault();
-    const novoPaciente = {
+    const dadosParaCriacao = {
       nome,
       endereco,
       quantidaDeDiasNoMes,
@@ -34,34 +34,38 @@ export default function PacienteTestePost() {
       ano,
       tipo
     };
-    mutation.mutate(novoPaciente);
+    mutation.mutate(dadosParaCriacao);
   };
-  
-  return (  
-    <div>    
+
+  function teste(t) {
+    console.log('ola', t)
+  }
+
+  return (
+    <div>
       <form onSubmit={criarPaciente}>
         <div>
           <span>Nome:</span><input type="text" onChange={(e) => setNome(e.target.value)} />
-        </div>        
+        </div>
         <div>
           <span>Endereço:</span><input type="text" onChange={(e) => setEndereco(e.target.value)} />
-        </div>   
+        </div>
         <div>
           <span>Quantidade de dias no mês:</span><input type="number" onChange={(e) => setQuantidaDeDiasNoMes(e.target.value)} />
-        </div>  
+        </div>
         <div>
           <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
-        </div>  
+        </div>
         <div>
           <span>Mês:</span><input type="text" onChange={(e) => setMes(e.target.value)} />
-        </div>  
+        </div>
         <div>
           <span>Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
-        </div>  
+        </div>
         <div>
-          <span>Tipo:</span><input type="text" onChange={(e) => setTipo(e.target.value)} />
-        </div>  
-        <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
+          <span>Tipo: </span><PacienteTesteSelect />
+        </div>
+        <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />        
       </form>
     </div>
   )
