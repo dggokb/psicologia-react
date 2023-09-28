@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
 
-export default function PacienteTesteSelect({ selectedValue, onChange }: {
+export default function SelectDeTipoDePaciente({ selectedValue, onChange }: {
   selectedValue: string,
   onChange: (value: string) => void;
 }) {  
