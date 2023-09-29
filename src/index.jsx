@@ -5,33 +5,44 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import './index.css';
+import Home from './routes/home';
+import PacienteGet from './routes/pacienteGet';
+import PacientePost from './routes/pacientePost'
 import ErrorPage from './error-page';
-import Root, { action as rootAction, loader as rootLoader } from './routes/root';
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    loader: rootLoader(queryClient),
-    action: rootAction(queryClient),
+    path: "/",
+    element: <Home />, 
+    errorElement: <ErrorPage />, 
     children: [
       {
-        index: true,
-        element: <Index />,
+        path: "paciente",
+        element: <PacienteGet />,   
       },
-    ],
+    ]
   },
+  {
+    path: "/buscar",
+    element: <PacienteGet />, 
+    errorElement: <ErrorPage />, 
+  },
+  {
+    path: "/adicionar",
+    element: <PacientePost />, 
+    errorElement: <ErrorPage />,     
+  },
+ 
 ])
 
 export default function App() {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient} contextSharing={true}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools position="bottom-right" />
+        <RouterProvider router={router} />        
       </QueryClientProvider>
     </React.StrictMode>
   )

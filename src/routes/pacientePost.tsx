@@ -1,8 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import SelectDeMeses from "./selectDeMeses";
-import SelectDeTipoDePaciente from "./selectDeTipoDePaciente";
+import SelectDeMeses from "../components/selectDeMeses";
+import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
+import { Link } from "react-router-dom";
 
 export default function PacienteTestePost() {
 
@@ -69,6 +70,10 @@ export default function PacienteTestePost() {
         </div>
         <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
       </form>
+
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
     </div>
   )
 }

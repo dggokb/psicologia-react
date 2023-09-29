@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { usePacienteData } from "../hooks/usePacienteData";
 
 
@@ -39,6 +40,10 @@ export default function PacienteGet() {
       ) : (
         <span>Not ready ...</span>
       )}
+
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
     </div>
   )
 }
