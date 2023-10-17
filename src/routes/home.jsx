@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import PacienteGet from "./pacienteGet";
 
 export default function Home() {
 

@@ -9,7 +9,7 @@ import './index.css';
 import Home from './routes/home';
 import PacienteGet from './routes/pacienteGet';
 import PacientePost from './routes/pacientePost'
-import ErrorPage from './error-page';
+import ErrorPage from './routes/error-page';
 
 const queryClient = new QueryClient()
 
