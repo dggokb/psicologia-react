@@ -11,6 +11,9 @@ export default function Home() {
                 <nav>
                     <Link to="/adicionar">Adicionar</Link>
                 </nav>
+                <nav>
+                    <Link to="/login">Login</Link>
+                </nav>
             </div>
         </>
     )
