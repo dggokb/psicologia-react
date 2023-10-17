@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const API_URL = 'http://localhost:8080/paciente'
+const API_URL = 'http://localhost:8080/mes'
 
 const config = {
   headers: {
@@ -11,12 +11,11 @@ const config = {
   data: {},
 };
 
-export function usePacienteData() {
+export function useMesData() {
   return useQuery({
     queryFn: async () => await axios.get(API_URL, config),
-    queryKey: ['paciente-data'],
-    refetchOnWindowFocus: false,
-    enabled: false
+    queryKey: ['mes-data'],
+    refetchOnWindowFocus: false
   })
 }
 

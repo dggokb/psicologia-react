@@ -1,7 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import PacienteTesteSelect from './pacienteTesteSelect';
+import SelectDeMeses from "../components/selectDeMeses";
+import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
+import { Link } from "react-router-dom";
 
 export default function PacienteTestePost() {
 
@@ -11,7 +13,7 @@ export default function PacienteTestePost() {
   const [valorPorSessao, setValorPorSessao] = useState();
   const [mes, setMes] = useState();
   const [ano, setAno] = useState();
-  const [tipo, setTipo] = useState();  
+  const [tipo, setTipo] = useState("VALOR_POR_SESSAO");
 
   const mutation = useMutation((dadosParaCriacao) => {
     return axios.post("http://localhost:8080/paciente", dadosParaCriacao);
@@ -37,10 +39,6 @@ export default function PacienteTestePost() {
     mutation.mutate(dadosParaCriacao);
   };
 
-  function teste(t) {
-    console.log('ola', t)
-  }
-
   return (
     <div>
       <form onSubmit={criarPaciente}>
@@ -57,16 +55,25 @@ export default function PacienteTestePost() {
           <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
         </div>
         <div>
-          <span>Mês:</span><input type="text" onChange={(e) => setMes(e.target.value)} />
+          <span>Mês: </span>
+          <SelectDeMeses selectedValue={mes} onChange={setMes} />
+          <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
         </div>
         <div>
-          <span>Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
+          <div class="row">
+            <span>Tipo: </span>
+            <SelectDeTipoDePaciente
+              selectedValue={tipo}
+              onChange={setTipo}
+            />
+          </div>
         </div>
-        <div>
-          <span>Tipo: </span><PacienteTesteSelect />
-        </div>
-        <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />        
+        <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
       </form>
+
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
     </div>
   )
 }

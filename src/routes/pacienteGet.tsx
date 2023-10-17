@@ -1,7 +1,8 @@
-import { usePacienteData } from "./hooks/usePacienteData";
+import { Link } from "react-router-dom";
+import { usePacienteData } from "../hooks/usePacienteData";
 
 
-export default function Paciente() {
+export default function PacienteGet() {
 
   const { isInitialLoading, isError, data, error, refetch } = usePacienteData();
 
@@ -39,6 +40,10 @@ export default function Paciente() {
       ) : (
         <span>Not ready ...</span>
       )}
+
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
     </div>
   )
 }
