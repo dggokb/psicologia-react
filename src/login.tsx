@@ -18,9 +18,6 @@ export default function Login() {
                 <div className="pt-1 mb-4">
                     <button className="btn btn-info btn-lg btn-block" type="button">Login</button>
                 </div>
-
-                <p className="small mb-5 pb-lg-2"><a className="text-muted" href="#!">Forgot password?</a></p>
-                <p>Don't have an account? <a href="#!" className="link-info">Register here</a></p>
             </form>
         </section >
     )

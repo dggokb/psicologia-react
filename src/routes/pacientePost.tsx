@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SelectDeMeses from "../components/selectDeMeses";
 import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
-import { Link } from "react-router-dom";
 
-export default function PacienteTestePost() {
+export default function PacientePost() {
 
   const [nome, setNome] = useState();
   const [endereco, setEndereco] = useState();
@@ -55,12 +55,11 @@ export default function PacienteTestePost() {
           <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
         </div>
         <div>
-          <span>Mês: </span>
-          <SelectDeMeses selectedValue={mes} onChange={setMes} />
+          <span>Mês: </span><SelectDeMeses selectedValue={mes} onChange={setMes} />
           <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
         </div>
         <div>
-          <div class="row">
+          <div className="row">
             <span>Tipo: </span>
             <SelectDeTipoDePaciente
               selectedValue={tipo}
