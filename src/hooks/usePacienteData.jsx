@@ -3,10 +3,13 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:8080/paciente'
 
+const token = localStorage.getItem("tokenDoUsuario");
+
 const config = {
   headers: {
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}` 
   },
   data: {},
 };
