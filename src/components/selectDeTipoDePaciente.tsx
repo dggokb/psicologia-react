@@ -1,7 +1,7 @@
 import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
 
-export default function SelectDeTipoDePaciente({ mesData, selectedValue, onChange }: {
-  mesData: string,
+export default function SelectDeTipoDePaciente({ tipoDePacienteData, selectedValue, onChange }: {
+  tipoDePacienteData: string,
   selectedValue: string,
   onChange: (value: string) => void;
 }) {

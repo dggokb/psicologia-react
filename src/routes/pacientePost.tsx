@@ -1,11 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SelectDeMeses from "../components/selectDeMeses";
 import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
 
-export default function PacientePost() {
+export default function PacientePost({ queryClient }: {
+  queryClient: QueryClient;
+}) {
 
   const [nome, setNome] = useState();
   const [endereco, setEndereco] = useState();

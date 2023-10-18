@@ -1,6 +1,7 @@
 import { useMesData } from "../hooks/useMesData";
 
-export default function SelectDeMeses({ selectedValue, onChange }: {
+export default function SelectDeMeses({ mesData, selectedValue, onChange }: {
+  mesData: String,
   selectedValue: string,
   onChange: (value: string) => void;
 }) {
