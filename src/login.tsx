@@ -1,19 +1,21 @@
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login({ queryClient }: {
     queryClient: QueryClient;
 }) {
 
+    const navigate = useNavigate();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const mutation = useMutation((dadosParaCriacao) => {
-        console.log(dadosParaCriacao)
         return axios.post("http://localhost:8080/auth/login", dadosParaCriacao);
     },
         {
-            onSuccess: (retorno) => {
+            onSuccess: (retorno) => {       
+                navigate('/home')         
                 localStorage.setItem("tokenDoUsuario", retorno.data.token);
             },
         }
@@ -27,7 +29,6 @@ export default function Login({ queryClient }: {
         };
         mutation.mutate(dadosParaCriacao);
     };
-
 
     return (
         <section>

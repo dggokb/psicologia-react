@@ -6,25 +6,35 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
+import Login from './login';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
-import PacienteGet from './routes/pacienteGet';
-import PacientePost from './routes/pacientePost';
-import Login from './login';
+import PacienteGet from './routes/consultaPacientes';
+import AdicionarPaciente from './routes/adicionaPaciente';
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <Home />,
+  //   errorElement: <ErrorPage />,
+  //   children: [
+  //     {
+  //       path: "paciente",
+  //       element: <PacienteGet />,
+  //     },
+  //   ]
+  // },
   {
     path: "/",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/home",
     element: <Home />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "paciente",
-        element: <PacienteGet />,
-      },
-    ]
   },
   {
     path: "/buscar",
@@ -33,16 +43,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/adicionar",
-    element: <PacientePost queryClient={queryClient}/>,
+    element: <AdicionarPaciente queryClient={queryClient} />,
     errorElement: <ErrorPage />,
-  },
-  ,
-  {
-    path: "/login",
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-
+  }
 ])
 
 export default function App() {
