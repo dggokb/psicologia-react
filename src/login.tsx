@@ -1,7 +1,8 @@
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ queryClient }: {
     queryClient: QueryClient;
@@ -14,8 +15,8 @@ export default function Login({ queryClient }: {
         return axios.post("http://localhost:8080/auth/login", dadosParaCriacao);
     },
         {
-            onSuccess: (retorno) => {       
-                navigate('/home')         
+            onSuccess: (retorno) => {
+                navigate('/home')
                 localStorage.setItem("tokenDoUsuario", retorno.data.token);
             },
         }
@@ -31,25 +32,28 @@ export default function Login({ queryClient }: {
     };
 
     return (
-        <section>
-            <form onSubmit={criarLogin}>
-
-                <h3 className="fw-normal mb-3 pb-3">Log in</h3>
-
-                <div className="form-outline mb-4">
-                    <input type="text" onChange={(e) => setUsername(e.target.value)} />
-                    <label className="form-label">Usuário</label>
-                </div>
-
-                <div className="form-outline mb-4">
-                    <input type="password" id="form2Example28" className="form-control form-control-lg" onChange={(e) => setPassword(e.target.value)} />
-                    <label className="form-label">Senha</label>
-                </div>
-
-                <div className="pt-1 mb-4">
-                    <input type="submit" value={mutation.isSuccess ? "Logado!" : "Logar"} />
-                </div>
-            </form>
-        </section >
+        <Container>
+            <Stack gap={1}>
+                <div className="p-5"></div>
+                <div className="p-5"></div>
+            </Stack>
+            <Row className="justify-content-center">
+                <Col md="auto">
+                    <form onSubmit={criarLogin}>
+                        <h3>Login</h3>
+                        <Stack direction="vertical" gap={1}>
+                            <Form.Label>Faça o login com seu usuário e senha:</Form.Label>
+                            <Form.Group className="mb-2" controlId="usuarioId">
+                                <Form.Control type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Usuário" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="senhaId">
+                                <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
+                            </Form.Group>
+                            <Button as="input" type="submit" value={mutation.isSuccess ? "Logado!" : "Logar"} />
+                        </Stack>
+                    </form>
+                </Col>
+            </Row>
+        </Container>
     )
 }

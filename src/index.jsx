@@ -5,15 +5,14 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './index.css';
 import Login from './login';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
 import PacienteGet from './routes/consultaPacientes';
 import AdicionarPaciente from './routes/adicionaPaciente';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryClient = new QueryClient()
-
 const router = createBrowserRouter([
   // {
   //   path: "/",
