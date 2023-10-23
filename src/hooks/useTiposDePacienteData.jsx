@@ -5,7 +5,6 @@ const API_URL = 'http://localhost:8080/paciente/tipo'
 const token = localStorage.getItem("tokenDoUsuario");
 
 export function useTiposDePacienteData() {
-    console.log(token)
     const config = {
         headers: {
             'Accept': 'application/json',

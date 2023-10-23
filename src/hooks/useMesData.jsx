@@ -13,8 +13,6 @@ export function useMesData() {
     },
     data: {},
   };
-  console.log(token)
-  console.log(config)
   return useQuery({
     queryFn: async () => await axios.get(API_URL, config),
     queryKey: ['mes-data'],

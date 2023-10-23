@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import Navbar from "./navbar";
+import AdicionarPaciente from "./adicionaPaciente";
+import ConsultaPacientes from "./consultaPacientes";
 
 export default function Home() {
-    const token = localStorage.getItem("tokenDoUsuario");
-    console.log(token)
 
     return (
         <>
             <div>
-                <nav>
-                    <Link to="/buscar">Buscar</Link>
-                </nav>
-                <nav>
-                    <Link to="/adicionar">Adicionar</Link>
-                </nav>
+                <Navbar />
+                <Outlet />                
             </div>
         </>
     )

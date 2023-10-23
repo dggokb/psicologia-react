@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import SelectDeMeses from "../components/selectDeMeses";
 import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
 
-export default function AdicionarPaciente({ queryClient }: {
+export default function AdicionaPaciente({ queryClient }: {
   queryClient: QueryClient;
 }) {
 
@@ -53,9 +53,6 @@ export default function AdicionarPaciente({ queryClient }: {
 
   return (
     <div>
-      <nav>
-        <Link to="/home">Voltar</Link>
-      </nav>
       <form onSubmit={criarPaciente}>
         <div>
           <span>Nome:</span><input type="text" onChange={(e) => setNome(e.target.value)} />

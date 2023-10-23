@@ -2,15 +2,12 @@ import { Link } from "react-router-dom";
 import { usePacienteData } from "../hooks/usePacienteData";
 
 
-export default function ConsultarPacientes() {
+export default function ConsultaPacientes() {
 
   const { isInitialLoading, isError, data, error, refetch } = usePacienteData();
 
   return (
     <div>
-      <nav>
-        <Link to="/home">Voltar</Link>
-      </nav>
       <button onClick={() => refetch()}>Obter Todos</button>
       {data?.data ? (
         <>

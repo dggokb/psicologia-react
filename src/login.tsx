@@ -2,7 +2,7 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { HashRouter, Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 
 export default function Login({ queryClient }: {
     queryClient: QueryClient;
@@ -34,7 +34,7 @@ export default function Login({ queryClient }: {
     return (
         <Container>
             <Stack gap={1}>
-                <div className="p-5"></div>
+                <div className="p-4"></div>
                 <div className="p-5"></div>
             </Stack>
             <Row className="justify-content-center">

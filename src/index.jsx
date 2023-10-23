@@ -8,43 +8,34 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './login';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
-import PacienteGet from './routes/consultaPacientes';
-import AdicionarPaciente from './routes/adicionaPaciente';
+import ConsultaPacientes from './routes/consultaPacientes';
+import AdicionaPaciente from './routes/adicionaPaciente';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Home />,
-  //   errorElement: <ErrorPage />,
-  //   children: [
-  //     {
-  //       path: "paciente",
-  //       element: <PacienteGet />,
-  //     },
-  //   ]
-  // },
   {
     path: "/",
     element: <Login />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/home",
+    path: "home",
     element: <Home />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "buscar",
+        element: <ConsultaPacientes />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "adicionar",
+        element: <AdicionaPaciente queryClient={queryClient} />,
+        errorElement: <ErrorPage />,
+      }
+    ]
   },
-  {
-    path: "/buscar",
-    element: <PacienteGet />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/adicionar",
-    element: <AdicionarPaciente queryClient={queryClient} />,
-    errorElement: <ErrorPage />,
-  }
 ])
 
 export default function App() {
