@@ -1,18 +1,17 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-export default function Navbar() {
+export default function BarraDeNavegacao() {
     return (
-        <div className="p-3 mb-2 bg-dark text-white">
-            <Row>
-                <Col >
-                    <Link to="adicionar">Adicionar</Link>
-                </Col>
-                <Col>
-                    <Link to="buscar">Buscar</Link>
-                </Col>
-            </Row>
-        </div>
+        <>
+            <Navbar bg="dark" data-bs-theme="dark">
+                <Navbar.Brand href="#home">Pacientes</Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link href="adicionar">Adicionar</Nav.Link>
+                    <Nav.Link href="consultar">Consultar</Nav.Link>
+                </Nav>
+            </Navbar>
+        </>
     )
 }

@@ -1,15 +1,13 @@
-import { Link, Outlet } from "react-router-dom";
-import Navbar from "./navbar";
-import AdicionarPaciente from "./adicionaPaciente";
-import ConsultaPacientes from "./consultaPacientes";
+import { Outlet } from "react-router-dom";
+import BarraDeNavegacao from "./navbar";
 
 export default function Home() {
 
     return (
         <>
             <div>
-                <Navbar />
-                <Outlet />                
+                <BarraDeNavegacao />
+                <Outlet />
             </div>
         </>
     )

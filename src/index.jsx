@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "buscar",
+        path: "consultar",
         element: <ConsultaPacientes />,
         errorElement: <ErrorPage />,
       },
