@@ -1,7 +1,7 @@
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Button, Col, Form, InputGroup, Row, Stack } from "react-bootstrap";
 import SelectDeMeses from "../components/selectDeMeses";
 import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
 
@@ -21,7 +21,7 @@ export default function AdicionaPaciente({ queryClient }: {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` 
+      'Authorization': `Bearer ${token}`
     },
     data: {},
   };
@@ -52,35 +52,79 @@ export default function AdicionaPaciente({ queryClient }: {
   };
 
   return (
-    <div>
-      <form onSubmit={criarPaciente}>
-        <div>
-          <span>Nome:</span><input type="text" onChange={(e) => setNome(e.target.value)} />
-        </div>
-        <div>
-          <span>Endereço:</span><input type="text" onChange={(e) => setEndereco(e.target.value)} />
-        </div>
-        <div>
-          <span>Quantidade de dias no mês:</span><input type="number" onChange={(e) => setQuantidaDeDiasNoMes(e.target.value)} />
-        </div>
-        <div>
-          <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
-        </div>
-        <div>
-          <span>Mês: </span><SelectDeMeses selectedValue={mes} onChange={setMes} />
-          <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
-        </div>
-        <div>
-          <div className="row">
-            <span>Tipo: </span>
-            <SelectDeTipoDePaciente
-              selectedValue={tipo}
-              onChange={setTipo}
-            />
-          </div>
-        </div>
-        <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
-      </form>
-    </div>
+    <Row className="">
+      <Col md="auto">
+        <form onSubmit={criarPaciente}>
+          <Stack gap={1}>
+            <div className="p-1"></div>
+          </Stack>
+          <InputGroup className="mb-1">
+            <InputGroup.Text>Nome: </InputGroup.Text>
+            <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
+          </InputGroup>
+          <InputGroup className="mb-1">
+            <InputGroup.Text>Endereço: </InputGroup.Text>
+            <Form.Control type="text" onChange={(e) => setEndereco(e.target.value)} />
+          </InputGroup>
+          <InputGroup className="mb-1">
+            <InputGroup.Text>Quantidade de dias no mês: </InputGroup.Text>
+            <Form.Control type="number" onChange={(e) => setQuantidaDeDiasNoMes(e.target.value)} />
+          </InputGroup>
+          <InputGroup className="mb-1">
+            <InputGroup.Text>Valor por sessão: </InputGroup.Text>
+            <Form.Control type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
+          </InputGroup>
+          <Row>
+            <Col>
+              <InputGroup className="mb-1">
+                <InputGroup.Text>Mês: </InputGroup.Text>
+                <SelectDeMeses selectedValue={mes} onChange={setMes} />
+              </InputGroup>
+            </Col>
+            <Col>
+              <InputGroup className="mb-1">
+                <InputGroup.Text>Ano: </InputGroup.Text>
+                <Form.Control type="number" onChange={(e) => setAno(e.target.value)} />
+              </InputGroup>
+            </Col>
+          </Row>
+          <InputGroup className="mb-2">
+            <InputGroup.Text>Tipo: </InputGroup.Text>
+            <SelectDeTipoDePaciente selectedValue={tipo} onChange={setTipo} />
+          </InputGroup>
+          <Button as="input" type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
+        </form>
+      </Col>
+    </Row>
+
+    //   <div>
+    //     <span>Nome:</span><input type="text" onChange={(e) => setNome(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <span>Endereço:</span><input type="text" onChange={(e) => setEndereco(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <span>Quantidade de dias no mês:</span><input type="number" onChange={(e) => setQuantidaDeDiasNoMes(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <span>Mês: </span><SelectDeMeses selectedValue={mes} onChange={setMes} />
+    //     <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <div className="row">
+    //       <span>Tipo: </span>
+    //       <SelectDeTipoDePaciente
+    //         selectedValue={tipo}
+    //         onChange={setTipo}
+    //       />
+    //     </div>
+    //   </div>
+    //   <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
+    // </form>
+    //   </Form>
+
   )
 }

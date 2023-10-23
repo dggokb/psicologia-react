@@ -1,3 +1,4 @@
+import { Form } from "react-bootstrap";
 import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
 
 export default function SelectDeTipoDePaciente({ tipoDePacienteData, selectedValue, onChange }: {
@@ -10,11 +11,11 @@ export default function SelectDeTipoDePaciente({ tipoDePacienteData, selectedVal
   return (
     <>
       {data?.data ? (
-        <select onChange={(e) => onChange(e.target.value)}>
+        <Form.Select  onChange={(e) => onChange(e.target.value)}>
           {data?.data.map((dado, index) => (
             <option key={index} value={dado.name} defaultValue={selectedValue}>{dado.descricao}</option>
           ))}
-        </select>
+        </Form.Select >
       ) : isError ? (
         <span>Error: {error.message}</span>
       ) : isInitialLoading ? (

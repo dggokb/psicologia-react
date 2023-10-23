@@ -1,3 +1,4 @@
+import { Form } from "react-bootstrap";
 import { useMesData } from "../hooks/useMesData";
 
 export default function SelectDeMeses({ mesData, selectedValue, onChange }: {
@@ -10,17 +11,17 @@ export default function SelectDeMeses({ mesData, selectedValue, onChange }: {
   return (
     <>
       {data?.data ? (
-        <select onChange={(e) => onChange(e.target.value)}>
+        <Form.Select  onChange={(e) => onChange(e.target.value)} >
           {data?.data.map((dado, index) => (
             <option key={index} value={dado.name} defaultValue={selectedValue}>{dado.descricao}</option>
           ))}
-        </select>
+        </Form.Select >
       ) : isError ? (
-        <span>Error: {error.message}</span>
+        <>Error: {error.message}</>
       ) : isInitialLoading ? (
-        <span>Loading...</span>
+        <>Loading...</>
       ) : (
-        <span>Not ready ...</span>
+        <>Not ready ...</>
       )}
     </>
   )
