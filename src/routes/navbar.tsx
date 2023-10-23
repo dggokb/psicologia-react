@@ -7,9 +7,13 @@ export default function BarraDeNavegacao() {
         <>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Navbar.Brand href="#home">Pacientes</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="adicionar">Adicionar</Nav.Link>
-                    <Nav.Link href="consultar">Consultar</Nav.Link>
+                <Nav className="me-auto" fill variant="underline">
+                    <Nav.Item>
+                        <Nav.Link href="adicionar">Adicionar</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="consultar">Consultar</Nav.Link>
+                    </Nav.Item>
                 </Nav>
             </Navbar>
         </>
