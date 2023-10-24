@@ -1,24 +1,29 @@
-import React from "react";
-import { Accordion, Button, Col, InputGroup, Row, Stack, Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { Accordion, Button, Form, InputGroup, Stack, Table } from "react-bootstrap";
 import { usePacienteData } from "../hooks/usePacienteData";
 
 
 export default function ConsultaPacientes() {
 
-  const { isInitialLoading, isError, data, error, refetch } = usePacienteData();
+  const [nome, setNome] = useState();
+  const { isInitialLoading, isError, data, error, refetch } = usePacienteData(nome);
+
 
   return (
     <Accordion data-bs-theme="dark">
       <Stack gap={1}>
         <div className="p-1"></div>
       </Stack>
-      <Button onClick={() => refetch()} as="input" type="button" value="obter todos" className="mb-3" />
-
+      <Button onClick={() => refetch()} as="input" type="button" value="Consultar todos" className="mb-3" />
+      <InputGroup className="mb-1">
+        <InputGroup.Text>Consultar por nome: </InputGroup.Text>
+        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
+      </InputGroup>
       {data?.data ? (
         <>
           {data?.data.map((dado) => (
-            <Accordion.Item eventKey={dado.id}>
-              <Accordion.Header>{dado.nome}</Accordion.Header>
+            <Accordion.Item eventKey={dado.id} key={dado.id}>
+              <Accordion.Header >{dado.nome}</Accordion.Header>
               <Accordion.Body>
 
                 <InputGroup className="mb-1">
@@ -47,7 +52,7 @@ export default function ConsultaPacientes() {
                 </InputGroup>
 
                 <InputGroup className="mb-1">
-                  <Table striped bordered hover variant="dark">
+                  <Table striped bordered hover variant="dark" >
                     <thead>
                       <tr>
                         <th>Mês</th>

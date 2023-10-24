@@ -96,35 +96,5 @@ export default function AdicionaPaciente({ queryClient }: {
         </form>
       </Col>
     </Row>
-
-    //   <div>
-    //     <span>Nome:</span><input type="text" onChange={(e) => setNome(e.target.value)} />
-    //   </div>
-    //   <div>
-    //     <span>Endereço:</span><input type="text" onChange={(e) => setEndereco(e.target.value)} />
-    //   </div>
-    //   <div>
-    //     <span>Quantidade de dias no mês:</span><input type="number" onChange={(e) => setQuantidaDeDiasNoMes(e.target.value)} />
-    //   </div>
-    //   <div>
-    //     <span>Valor por sessão:</span><input type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
-    //   </div>
-    //   <div>
-    //     <span>Mês: </span><SelectDeMeses selectedValue={mes} onChange={setMes} />
-    //     <span> Ano:</span><input type="number" onChange={(e) => setAno(e.target.value)} />
-    //   </div>
-    //   <div>
-    //     <div className="row">
-    //       <span>Tipo: </span>
-    //       <SelectDeTipoDePaciente
-    //         selectedValue={tipo}
-    //         onChange={setTipo}
-    //       />
-    //     </div>
-    //   </div>
-    //   <input type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
-    // </form>
-    //   </Form>
-
   )
 }

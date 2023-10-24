@@ -1,12 +1,10 @@
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
-import { HashRouter, Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ queryClient }: {
-    queryClient: QueryClient;
-}) {
+export default function Login() {
 
     const navigate = useNavigate();
     const [username, setUsername] = useState();

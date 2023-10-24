@@ -2,22 +2,22 @@ import {
   QueryClient,
   QueryClientProvider
 } from '@tanstack/react-query';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './login';
+import AdicionaPaciente from './routes/adicionaPaciente';
+import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
-import ConsultaPacientes from './routes/consultaPacientes';
-import AdicionaPaciente from './routes/adicionaPaciente';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
     path: "home",
@@ -27,15 +27,15 @@ const router = createBrowserRouter([
       {
         path: "consultar",
         element: <ConsultaPacientes />,
-        errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />
       },
       {
         path: "adicionar",
         element: <AdicionaPaciente queryClient={queryClient} />,
-        errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />
       }
     ]
-  },
+  }
 ])
 
 export default function App() {

@@ -6,7 +6,7 @@ export default function BarraDeNavegacao() {
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
-                <Navbar.Brand href="#home">Pacientes</Navbar.Brand>
+                <Navbar.Brand href="">Pacientes</Navbar.Brand>
                 <Nav className="me-auto" fill variant="underline">
                     <Nav.Item>
                         <Nav.Link href="adicionar">Adicionar</Nav.Link>
