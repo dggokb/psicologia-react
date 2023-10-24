@@ -14,10 +14,9 @@ export default function ConsultaPacientes() {
       <Stack gap={1}>
         <div className="p-1"></div>
       </Stack>
-      <Button onClick={() => refetch()} as="input" type="button" value="Consultar todos" className="mb-3" />
       <InputGroup className="mb-1">
-        <InputGroup.Text>Consultar por nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
+        <InputGroup.Text>Nome: </InputGroup.Text>
+        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} onKeyUp={() => refetch()}/>
       </InputGroup>
       {data?.data ? (
         <>
