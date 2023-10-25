@@ -14,7 +14,7 @@ export default function ConsultaPacientes() {
       {/*TODO: criar componente */}
       <InputGroup className="mb-1">
         <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} onKeyUp={() => refetch()} />
+        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
       </InputGroup>
       {data && (
         <>

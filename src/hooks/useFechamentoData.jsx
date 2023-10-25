@@ -17,12 +17,11 @@ export function useFechamentoData(id, mes, ano) {
     }
   };
 
-  return useQuery({
+  return useQuery(['data', id, mes, ano], {
     queryFn: async () => await axios.get(API_URL, config),
     queryKey: ['fechamento-data'],
     refetchOnWindowFocus: false,
-    retry: false, 
-    enabled: false
+    enabled: Boolean(id, mes, ano),
   })
 }
 

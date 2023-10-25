@@ -11,8 +11,7 @@ export default function ConsultaFechamento() {
   const [id, setId] = useState('');
   const [mes, setMes] = useState('JANEIRO');
   const [ano, setAno] = useState(2023);
-  const [valorTotal, setValorTotal] = useState();
-  const { data, refetch } = usePacienteData(nome);
+  const { data } = usePacienteData(nome);
   const retorno = useFechamentoData(id, mes, ano);
 
   return (
@@ -21,9 +20,9 @@ export default function ConsultaFechamento() {
       {/*TODO: criar componente */}
       <InputGroup className="mb-1">
         <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} onKeyUp={() => refetch()} />
+        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
       </InputGroup>
-      
+
       {data && (
         <>
           {data?.data.map((dado) => {
@@ -50,7 +49,7 @@ export default function ConsultaFechamento() {
                       Valor:
                     </InputGroup.Text>
                     <InputGroup.Text id="basic-addon3">
-                      {retorno.data?.data.valorTotal}
+                      {retorno.data?.data.valorTotal ? retorno.data?.data.valorTotal : 0}
                     </InputGroup.Text>
                   </InputGroup>
                 </Accordion.Body>

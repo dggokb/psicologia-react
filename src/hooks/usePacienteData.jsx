@@ -16,10 +16,10 @@ export function usePacienteData(nome) {
     }
   };
 
-  return useQuery({
+  return useQuery(['data', nome],{
     queryFn: async () => await axios.get(API_URL, config),
     queryKey: ['paciente-data'],
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   })
 }
 
