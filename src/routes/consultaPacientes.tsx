@@ -1,30 +1,27 @@
 import React, { useState } from "react";
-import { Accordion, Button, Form, InputGroup, Stack, Table } from "react-bootstrap";
+import { Accordion, Form, InputGroup, Table } from "react-bootstrap";
 import { usePacienteData } from "../hooks/usePacienteData";
 
 
 export default function ConsultaPacientes() {
 
   const [nome, setNome] = useState();
-  const { isInitialLoading, isError, data, error, refetch } = usePacienteData(nome);
+  const { data, refetch } = usePacienteData(nome);
 
 
   return (
     <Accordion data-bs-theme="dark">
-      <Stack gap={1}>
-        <div className="p-1"></div>
-      </Stack>
+      {/*TODO: criar componente */}
       <InputGroup className="mb-1">
         <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} onKeyUp={() => refetch()}/>
+        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} onKeyUp={() => refetch()} />
       </InputGroup>
-      {data?.data ? (
+      {data && (
         <>
           {data?.data.map((dado) => (
             <Accordion.Item eventKey={dado.id} key={dado.id}>
               <Accordion.Header >{dado.nome}</Accordion.Header>
               <Accordion.Body>
-
                 <InputGroup className="mb-1">
                   <InputGroup.Text id="basic-addon3">
                     Endereço:
@@ -77,14 +74,7 @@ export default function ConsultaPacientes() {
             </Accordion.Item>
           ))}
         </>
-      ) : isError ? (
-        <></>
-      ) : isInitialLoading ? (
-        <></>
-      ) : (
-        <></>
       )}
-
     </Accordion>
   )
 }

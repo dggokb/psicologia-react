@@ -11,6 +11,7 @@ import AdicionaPaciente from './routes/adicionaPaciente';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
+import ConsultaFechamento from './routes/consultaFechamento';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: "adicionar",
         element: <AdicionaPaciente queryClient={queryClient} />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "fechamento",
+        element: <ConsultaFechamento />,
         errorElement: <ErrorPage />
       }
     ]

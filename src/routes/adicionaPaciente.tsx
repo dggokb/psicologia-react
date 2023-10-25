@@ -52,7 +52,7 @@ export default function AdicionaPaciente({ queryClient }: {
   };
 
   return (
-    <Row className="">
+    <Row data-bs-theme="dark">
       <Col md="auto">
         <form onSubmit={criarPaciente}>
           <Stack gap={1}>
@@ -92,7 +92,7 @@ export default function AdicionaPaciente({ queryClient }: {
             <InputGroup.Text>Tipo: </InputGroup.Text>
             <SelectDeTipoDePaciente selectedValue={tipo} onChange={setTipo} />
           </InputGroup>
-          <Button as="input" type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
+          <Button variant="dark" as="input" type="submit" value={mutation.isSuccess ? "Salvo!" : "Salvar"} />
         </form>
       </Col>
     </Row>

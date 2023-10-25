@@ -6,22 +6,17 @@ export default function SelectDeTipoDePaciente({ tipoDePacienteData, selectedVal
   selectedValue: string,
   onChange: (value: string) => void;
 }) {
-  const { isInitialLoading, isError, data, error, refetch } = useTiposDePacienteData();
+  const { data } = useTiposDePacienteData();
 
+  //TODO: criar componente de select e juntar com o meses
   return (
     <>
-      {data?.data ? (
-        <Form.Select  onChange={(e) => onChange(e.target.value)}>
+      {data && (
+        <Form.Select onChange={(e) => onChange(e.target.value)}>
           {data?.data.map((dado, index) => (
             <option key={index} value={dado.name} defaultValue={selectedValue}>{dado.descricao}</option>
           ))}
         </Form.Select >
-      ) : isError ? (
-        <span>Error: {error.message}</span>
-      ) : isInitialLoading ? (
-        <span>Loading...</span>
-      ) : (
-        <span>Not ready ...</span>
       )}
     </>
   )
