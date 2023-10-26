@@ -13,6 +13,7 @@ import ConsultaFechamento from './routes/consultaFechamento';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
+import Logout from './components/logout';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: "fechamento",
         element: <ConsultaFechamento />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "logout",
+        element: <Logout />,
         errorElement: <ErrorPage />
       }
     ]

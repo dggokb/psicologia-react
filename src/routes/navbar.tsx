@@ -8,7 +8,7 @@ export default function BarraDeNavegacao() {
         <>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Navbar.Brand href="">Pacientes</Navbar.Brand>
-                <Nav className="me-auto" fill variant="underline">
+                <Nav className="me-auto justify-content-end" fill variant="underline">
                     <Nav.Item>
                         <Nav.Link as={Link} to="adicionar">Adicionar</Nav.Link>
                     </Nav.Item>
@@ -17,6 +17,9 @@ export default function BarraDeNavegacao() {
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link as={Link} to="fechamento">Fechamento</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link as={Link} to="logout">Logout</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </Navbar>
