@@ -6,12 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Login from './login';
 import AdicionaPaciente from './routes/adicionaPaciente';
+import ConsultaFechamento from './routes/consultaFechamento';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
-import ConsultaFechamento from './routes/consultaFechamento';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -49,6 +50,7 @@ export default function App() {
     <React.StrictMode>
       <QueryClientProvider client={queryClient} contextSharing={true}>
         <RouterProvider router={router} />
+        <ToastContainer />
       </QueryClientProvider>
     </React.StrictMode>
   )

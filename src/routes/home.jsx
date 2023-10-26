@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import BarraDeNavegacao from "./navbar";
+import { ToastContainer } from "react-bootstrap";
 
 export default function Home() {
 
@@ -7,7 +8,7 @@ export default function Home() {
         <>
             <div>
                 <BarraDeNavegacao />
-                <Outlet />
+                <Outlet />            
             </div>
         </>
     )

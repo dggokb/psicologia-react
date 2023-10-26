@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Mensagem from "../components/mensagem";
 
 export function usePacienteData(nome) {
   const API_URL = 'http://localhost:8080/paciente/consultar';
@@ -16,10 +17,17 @@ export function usePacienteData(nome) {
     }
   };
 
-  return useQuery(['data', nome],{
-    queryFn: async () => await axios.get(API_URL, config),
+  return useQuery(['data', nome], {
+    queryFn: async () => {
+      try {
+        return await axios.get(API_URL, config)
+      } catch (error) {
+        Mensagem.exibirFalha(error.response.data.massage)
+      }
+    },
     queryKey: ['paciente-data'],
     refetchOnWindowFocus: false,
+    retry: false
   })
 }
 

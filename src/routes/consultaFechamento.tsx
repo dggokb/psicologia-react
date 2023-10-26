@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Accordion, Button, Col, Form, InputGroup, Row, Stack, Table } from "react-bootstrap";
+import { Accordion, Button, Col, Form, InputGroup, Row, Stack, Table, ToastContainer } from "react-bootstrap";
 import { usePacienteData } from "../hooks/usePacienteData";
 import SelectDeMeses from "../components/selectDeMeses";
 import { useFechamentoData } from "../hooks/useFechamentoData";
@@ -54,8 +54,6 @@ export default function ConsultaFechamento() {
                   </InputGroup>
                 </Accordion.Body>
               </Accordion.Item>
-
-
             );
           })}
         </>
@@ -63,8 +61,5 @@ export default function ConsultaFechamento() {
 
     </Accordion>
   )
-}
-function updateState(arg0: {}): any {
-  throw new Error("Function not implemented.");
 }
 
