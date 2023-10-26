@@ -10,7 +10,7 @@ export default function ConsultaFechamento() {
   const [nome, setNome] = useState();
   const [id, setId] = useState('');
   const [mes, setMes] = useState('JANEIRO');
-  const [ano, setAno] = useState(2023);
+  const [ano, setAno] = useState(new Date().getFullYear());
   const { data } = usePacienteData(nome);
   const retorno = useFechamentoData(id, mes, ano);
 
@@ -58,7 +58,6 @@ export default function ConsultaFechamento() {
           })}
         </>
       )}
-
     </Accordion>
   )
 }

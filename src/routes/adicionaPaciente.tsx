@@ -1,15 +1,12 @@
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import Mensagem from "../components/mensagem";
 import SelectDeMeses from "../components/selectDeMeses";
 import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
-import { Console } from "console";
 
-export default function AdicionaPaciente({ queryClient }: {
-  queryClient: QueryClient;
-}) {
+export default function AdicionaPaciente() {
 
   const [nome, setNome] = useState();
   const [endereco, setEndereco] = useState();
@@ -28,38 +25,22 @@ export default function AdicionaPaciente({ queryClient }: {
     data: {},
   };
 
-  const mutation =
-    useMutation({
-      mutationFn: async (dadosParaCriacao) => {
-        try {
-          return await axios.post("http://localhost:8080/paciente", dadosParaCriacao, config)
-        } catch (error) {
-          Mensagem.exibirFalha(error.response.data.massage)
-        }
-      },
-      onSuccess: (data) => {
-        if(data?.status === 200){
-          Mensagem.exibirSucesso("Paciente adicionado com sucesso.")
-        }
+  const mutation = useMutation({
+    mutationFn: async (dadosParaCriacao) => {
+      try {
+        return await axios.post("http://localhost:8080/paciente", dadosParaCriacao, config)
+      } catch (error) {
+        Mensagem.exibirFalha(error.response.data.massage)
       }
-    })
+    },
+    onSuccess: (data) => {
+      if (data?.status === 200) {
+        Mensagem.exibirSucesso("Paciente adicionado com sucesso.")
+      }
+    }
+  })
 
-  // useMutation(async (dadosParaCriacao) => {
-  //   try {
-  //     return await axios.post("http://localhost:8080/paciente", dadosParaCriacao, config)
-  //   } catch (error) {
-  //     Mensagem.exibirFalha(error.response.data.massage)
-  //   }
-  // },
-  //   {
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries('paciente-data');
-  //     },
-  //   }
-  // );
-
-  const criarPaciente = (e) => {
-    e.preventDefault();
+  const criarPaciente = () => {
     const dadosParaCriacao = {
       nome,
       endereco,

@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "adicionar",
-        element: <AdicionaPaciente queryClient={queryClient} />,
+        element: <AdicionaPaciente />,
         errorElement: <ErrorPage />
       },
       {
