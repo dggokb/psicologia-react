@@ -40,7 +40,8 @@ export default function AdicionaPaciente() {
     }
   })
 
-  const criarPaciente = () => {
+  const criarPaciente = (e) => {
+    e.preventDefault();
     const dadosParaCriacao = {
       nome,
       endereco,
