@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
 import BarraDeNavegacao from "./navbar";
-import { ToastContainer } from "react-bootstrap";
+import useValidarToken from "../hooks/useValidarToken";
 
 export default function Home() {
-
+    useValidarToken();
     return (
         <>
             <div>
                 <BarraDeNavegacao />
-                <Outlet />            
+                <Outlet />
             </div>
         </>
     )

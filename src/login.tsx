@@ -3,22 +3,27 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Mensagem from "./components/mensagem";
 
 export default function Login() {
-
     const navigate = useNavigate();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-    const mutation = useMutation((dadosParaCriacao) => {
-        return axios.post("http://localhost:8080/auth/login", dadosParaCriacao);
-    },
-        {
-            onSuccess: (retorno) => {
+    const mutation = useMutation({
+        mutationFn: async (dadosParaCriacao) => {
+            try {
+                return await axios.post("http://localhost:8080/auth/login", dadosParaCriacao);
+            } catch (error) {
+                Mensagem.exibirFalha(error.response.data.massage)
+            }
+        },
+        onSuccess: (retorno) => {
+            if (retorno?.status === 200) {
                 navigate('/home')
                 localStorage.setItem("tokenDoUsuario", retorno.data.token);
-            },
+            }
         }
-    );
+    })
 
     const criarLogin = (e) => {
         e.preventDefault();

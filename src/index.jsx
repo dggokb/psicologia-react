@@ -46,13 +46,16 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
+
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient} contextSharing={true}>
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <React.StrictMode>
+
         <RouterProvider router={router} />
         <ToastContainer />
-      </QueryClientProvider>
-    </React.StrictMode>
+
+      </React.StrictMode>
+    </QueryClientProvider>
   )
 }
 
