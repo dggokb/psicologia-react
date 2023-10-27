@@ -6,6 +6,7 @@ export function usePacienteData(nome) {
 
   const API_URL = 'http://localhost:8080/paciente/consultar';
   const token = localStorage.getItem("tokenDoUsuario");
+  const usuarioId = localStorage.getItem("usuario");
   const config = {
     headers: {
       'Accept': 'application/json',
@@ -14,7 +15,8 @@ export function usePacienteData(nome) {
     },
     data: {},
     params: {
-      nome: nome
+      nome: nome,
+      usuarioId: usuarioId
     }
   };
 

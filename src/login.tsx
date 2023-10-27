@@ -53,7 +53,7 @@ export default function Login() {
                             <Form.Group className="mb-3" controlId="senhaId">
                                 <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
                             </Form.Group>
-                            <Button variant="dark" as="input" type="submit" value={mutation.isSuccess ? "Logado!" : "Logar"} />
+                            <Button variant="dark" as="input" type="submit" value={"Logar"} />
                         </Stack>
                     </form>
                 </Col>

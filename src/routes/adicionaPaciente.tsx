@@ -16,6 +16,7 @@ export default function AdicionaPaciente() {
   const [ano, setAno] = useState(new Date().getFullYear());
   const [tipo, setTipo] = useState("VALOR_FIXO");
   const token = localStorage.getItem("tokenDoUsuario");
+  const usuarioId = localStorage.getItem("usuario");
   const config = {
     headers: {
       'Accept': 'application/json',
@@ -43,6 +44,7 @@ export default function AdicionaPaciente() {
   const criarPaciente = (e) => {
     e.preventDefault();
     const dadosParaCriacao = {
+      usuarioId,
       nome,
       endereco,
       quantidaDeDiasNoMes,
