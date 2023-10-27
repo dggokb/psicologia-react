@@ -21,6 +21,7 @@ export default function Login() {
             if (retorno?.status === 200) {
                 navigate('/home')
                 localStorage.setItem("tokenDoUsuario", retorno.data.token);
+                localStorage.setItem("usuario", retorno.data.usuarioId);
             }
         }
     })

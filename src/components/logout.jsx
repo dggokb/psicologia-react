@@ -5,6 +5,7 @@ export default function Logout() {
     const navigate = useNavigate();
     useEffect(() => {
         localStorage.setItem("tokenDoUsuario", "");
+        localStorage.setItem("usuario", "");
         navigate('/')
     })
 }
