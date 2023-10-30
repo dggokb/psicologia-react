@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from "react";
-import { Accordion, Button, Col, Form, InputGroup, Row, Stack, Table, ToastContainer } from "react-bootstrap";
-import { usePacienteData } from "../hooks/usePacienteData";
-import SelectDeMeses from "../components/selectDeMeses";
-import { useFechamentoData } from "../hooks/useFechamentoData";
+import React, { useState } from "react";
+import { Accordion, Col, Form, InputGroup, Row } from "react-bootstrap";
 import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
+import Select from "../components/select";
+import { useFechamentoData } from "../hooks/useFechamentoData";
+import { useMesData } from "../hooks/useMesData";
+import { usePacienteData } from "../hooks/usePacienteData";
 
 
 export default function ConsultaFechamento() {
@@ -14,6 +15,7 @@ export default function ConsultaFechamento() {
   const [ano, setAno] = useState(new Date().getFullYear());
   const { data } = usePacienteData(nome);
   const retorno = useFechamentoData(id, mes, ano);
+  const dataMes = useMesData();
 
   return (
 
@@ -30,7 +32,7 @@ export default function ConsultaFechamento() {
                     <Col>
                       <InputGroup className="mb-1">
                         <InputGroup.Text>Mês: </InputGroup.Text>
-                        <SelectDeMeses selectedValue={mes} onChange={setMes} />
+                        <Select data={dataMes.data} selectedValue={mes} onChange={setMes} />
                       </InputGroup>
                     </Col>
                     <Col>

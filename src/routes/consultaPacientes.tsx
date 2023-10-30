@@ -3,12 +3,10 @@ import { Accordion, InputGroup, Table } from "react-bootstrap";
 import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 import { usePacienteData } from "../hooks/usePacienteData";
 
-
 export default function ConsultaPacientes() {
 
   const [nome, setNome] = useState();
   const { data, refetch } = usePacienteData(nome);
-
 
   return (
     <Accordion data-bs-theme="dark">

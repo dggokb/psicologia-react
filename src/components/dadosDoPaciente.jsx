@@ -1,9 +1,13 @@
 import React from "react";
 import { Col, Form, InputGroup, Row } from "react-bootstrap";
-import SelectDeMeses from "../components/selectDeMeses";
-import SelectDeTipoDePaciente from "../components/selectDeTipoDePaciente";
+import { useMesData } from "../hooks/useMesData";
+import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
+import Select from "./select";
 
 export default function DadosDoPaciente({ setQuantidaDeDiasNoMes, setValorPorSessao, mes, setMes, setAno, tipo, setTipo, visivel }) {
+
+    const tipoData = useTiposDePacienteData();
+    const mesData = useMesData();
 
     return (
         <>
@@ -21,7 +25,7 @@ export default function DadosDoPaciente({ setQuantidaDeDiasNoMes, setValorPorSes
                         <Col>
                             <InputGroup className="mb-0">
                                 <InputGroup.Text>Mês: </InputGroup.Text>
-                                <SelectDeMeses selectedValue={mes} onChange={setMes} />
+                                <Select data={mesData.data} selectedValue={mes} onChange={setMes} />
                             </InputGroup>
                         </Col>
                         <Col>
@@ -33,7 +37,7 @@ export default function DadosDoPaciente({ setQuantidaDeDiasNoMes, setValorPorSes
                     </Row>
                     <InputGroup className="mb-0">
                         <InputGroup.Text>Tipo: </InputGroup.Text>
-                        <SelectDeTipoDePaciente selectedValue={tipo} onChange={setTipo} />
+                        <Select data={tipoData.data} selectedValue={tipo} onChange={setTipo} />
                     </InputGroup>
                 </>
             }
