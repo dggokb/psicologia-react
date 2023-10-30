@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Accordion, Form, InputGroup, Table } from "react-bootstrap";
+import { Accordion, InputGroup, Table } from "react-bootstrap";
+import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 import { usePacienteData } from "../hooks/usePacienteData";
 
 
@@ -11,11 +12,7 @@ export default function ConsultaPacientes() {
 
   return (
     <Accordion data-bs-theme="dark">
-      {/*TODO: criar componente */}
-      <InputGroup className="mb-1">
-        <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
-      </InputGroup>
+      <BuscaDePacientePorNome setNomeParaBusca={setNome} />
       {data && (
         <>
           {data?.data.map((dado) => (

@@ -5,6 +5,7 @@ import { Accordion, Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import DadosDoPaciente from "../components/dadosDoPaciente";
 import Mensagem from "../components/mensagem";
 import { usePacienteData } from "../hooks/usePacienteData";
+import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 
 export default function AdicionaPaciente() {
   const [nomeParaBusca, setNomeParaBusca] = useState();
@@ -99,13 +100,7 @@ export default function AdicionaPaciente() {
             {frequencia &&
               <>
                 <Accordion data-bs-theme="dark">
-                  {/*TODO: criar componente */}
-                  {/* <InputGroup className="mb-1">
-                    <InputGroup.Text>Nome: </InputGroup.Text>
-                    <Form.Control type="text" onChange={(e) => setNomeParaBusca(e.target.value)} />
-                  </InputGroup> */}
                   <BuscaDePacientePorNome setNomeParaBusca={setNomeParaBusca} />
-
                   {data && (
                     <>
                       {data?.data.map((dado) => {
@@ -138,17 +133,6 @@ export default function AdicionaPaciente() {
           </form>
         </Col>
       </Row >
-    </>
-  )
-}
-
-function BuscaDePacientePorNome({setNomeParaBusca}) {
-  return(
-    <>
-      <InputGroup className="mb-1">
-        <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNomeParaBusca(e.target.value)} />
-      </InputGroup>
     </>
   )
 }

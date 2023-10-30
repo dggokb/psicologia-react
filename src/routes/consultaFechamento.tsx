@@ -3,6 +3,7 @@ import { Accordion, Button, Col, Form, InputGroup, Row, Stack, Table, ToastConta
 import { usePacienteData } from "../hooks/usePacienteData";
 import SelectDeMeses from "../components/selectDeMeses";
 import { useFechamentoData } from "../hooks/useFechamentoData";
+import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 
 
 export default function ConsultaFechamento() {
@@ -17,12 +18,7 @@ export default function ConsultaFechamento() {
   return (
 
     <Accordion data-bs-theme="dark">
-      {/*TODO: criar componente */}
-      <InputGroup className="mb-1">
-        <InputGroup.Text>Nome: </InputGroup.Text>
-        <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
-      </InputGroup>
-
+      <BuscaDePacientePorNome setNomeParaBusca={setNome} />
       {data && (
         <>
           {data?.data.map((dado) => {
