@@ -1,8 +1,7 @@
 import { Form } from "react-bootstrap";
 import { useMesData } from "../hooks/useMesData";
 
-export default function SelectDeMeses({ mesData, selectedValue, onChange }: {
-  mesData: String,
+export default function SelectDeMeses({ selectedValue, onChange }: {
   selectedValue: string,
   onChange: (value: string) => void;
 }) {

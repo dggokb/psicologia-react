@@ -1,8 +1,8 @@
 import { Form } from "react-bootstrap";
 import { useTiposDePacienteData } from "../hooks/useTiposDePacienteData";
+import React from "react";
 
-export default function SelectDeTipoDePaciente({ tipoDePacienteData, selectedValue, onChange }: {
-  tipoDePacienteData: string,
+export default function SelectDeTipoDePaciente({ selectedValue, onChange }: {
   selectedValue: string,
   onChange: (value: string) => void;
 }) {
