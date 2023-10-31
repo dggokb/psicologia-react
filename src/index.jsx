@@ -3,7 +3,7 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -56,10 +56,8 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
       <React.StrictMode>
-
         <RouterProvider router={router} />
         <ToastContainer />
-
       </React.StrictMode>
     </QueryClientProvider>
   )

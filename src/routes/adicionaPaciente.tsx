@@ -2,12 +2,14 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import { Accordion, Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 import DadosDoPaciente from "../components/dadosDoPaciente";
 import Mensagem from "../components/mensagem";
 import { usePacienteData } from "../hooks/usePacienteData";
-import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
+
 
 export default function AdicionaPaciente() {
+  const [datasDasSessoes, setDataDaSessao] = useState([]);
   const [nomeParaBusca, setNomeParaBusca] = useState();
   const { data } = usePacienteData(nomeParaBusca);
   const [nome, setNome] = useState();
@@ -51,12 +53,13 @@ export default function AdicionaPaciente() {
       usuarioId,
       nome,
       endereco,
-      quantidaDeDiasNoMes,
       valorPorSessao,
       mes,
       ano,
-      tipo
+      tipo,
+      datasDasSessoes 
     };
+    console.log(datasDasSessoes)
 
     mutation.mutate(dadosParaCriacao);
   };
@@ -86,14 +89,16 @@ export default function AdicionaPaciente() {
                   <Form.Control type="text" onChange={(e) => setEndereco(e.target.value)} />
                 </InputGroup>
                 <DadosDoPaciente
-                  setQuantidaDeDiasNoMes={setQuantidaDeDiasNoMes}
                   setValorPorSessao={setValorPorSessao}
                   mes={mes}
                   setMes={setMes}
                   setAno={setAno}
                   tipo={tipo}
                   setTipo={setTipo}
-                  visivel={dadosDoPaciente} />
+                  dataDaSessao={datasDasSessoes}
+                  setDataDaSessao={setDataDaSessao}
+                  visivel={dadosDoPaciente}
+                />
                 <Button variant="dark" as="input" type="submit" value={"Salvar"} />
               </>
             }
@@ -112,14 +117,16 @@ export default function AdicionaPaciente() {
                             }}> {dado.nome}</Accordion.Header>
                             <Accordion.Body>
                               <DadosDoPaciente
-                                setQuantidaDeDiasNoMes={setQuantidaDeDiasNoMes}
                                 setValorPorSessao={setValorPorSessao}
                                 mes={mes}
                                 setMes={setMes}
                                 setAno={setAno}
                                 tipo={tipo}
                                 setTipo={setTipo}
-                                visivel={frequencia} />
+                                dataDaSessao={datasDasSessoes}
+                                setDataDaSessao={setDataDaSessao}
+                                visivel={frequencia}
+                              />
                               <Button variant="dark" as="input" type="submit" value={"Salvar"} />
                             </Accordion.Body>
                           </Accordion.Item>

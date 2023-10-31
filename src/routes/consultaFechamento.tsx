@@ -6,7 +6,6 @@ import { useFechamentoData } from "../hooks/useFechamentoData";
 import { useMesData } from "../hooks/useMesData";
 import { usePacienteData } from "../hooks/usePacienteData";
 
-
 export default function ConsultaFechamento() {
 
   const [nome, setNome] = useState();

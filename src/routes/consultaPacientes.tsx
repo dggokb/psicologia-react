@@ -58,7 +58,6 @@ export default function ConsultaPacientes() {
                           <td>{valor.mes}</td>
                           <td>{valor.quantidaDeDiasNoMes}</td>
                           <td>{valor.valorPorSessao}</td>
-
                           <td>{valor.ano}</td>
                         </tr>
                       ))}
