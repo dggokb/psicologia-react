@@ -3,17 +3,18 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Logout from './components/logout';
 import Login from './login';
 import AdicionaPaciente from './routes/adicionaPaciente';
+import AdicionaSessoes from './routes/adicionaSessoes';
 import ConsultaFechamento from './routes/consultaFechamento';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
-import Logout from './components/logout';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
       {
         path: "adicionar",
         element: <AdicionaPaciente />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "sessoes",
+        element: <AdicionaSessoes />,
         errorElement: <ErrorPage />
       },
       {
