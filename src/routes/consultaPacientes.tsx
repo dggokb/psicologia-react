@@ -57,7 +57,7 @@ export default function ConsultaPacientes() {
                         <tr>
                           <td>{valor.mes}</td>
                           <td>{valor.quantidaDeDiasNoMes}</td>
-                          <td>{valor.valorPorSessao}</td>
+                          <td>{valor.valorPorSessao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                           <td>{valor.ano}</td>
                         </tr>
                       ))}

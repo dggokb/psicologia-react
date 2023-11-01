@@ -24,13 +24,13 @@ export default function DadosDoPaciente({ setValorPorSessao,
         <>
             {visivel &&
                 <>
+                     <InputGroup className="mb-0">
+                        <InputGroup.Text>Tipo: </InputGroup.Text>
+                        <Select data={tipoData.data} selectedValue={tipo} onChange={setTipo} />
+                    </InputGroup>
                     <InputGroup className="mb-0">
                         <InputGroup.Text>Valor por sessão: </InputGroup.Text>
                         <Form.Control type="number" onChange={(e) => setValorPorSessao(e.target.value)} />
-                    </InputGroup>
-                    <InputGroup className="mb-0">
-                        <InputGroup.Text>Tipo: </InputGroup.Text>
-                        <Select data={tipoData.data} selectedValue={tipo} onChange={setTipo} />
                     </InputGroup>
                     {tipo === 'VALOR_POR_SESSAO' &&
                         <InputGroup className="mb-0">

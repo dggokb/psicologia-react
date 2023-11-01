@@ -16,7 +16,7 @@ export default function BarraDeNavegacao() {
                         <div className="p-2">
                             <NavDropdown title="Adicionar" id="basic-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="adicionar">Novo Paciente</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="sessoes">Novas sessões do paciente</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="sessoes">Novas datas das sessões do paciente</NavDropdown.Item>
                             </NavDropdown>
                         </div>
                         <div className="p-2">
