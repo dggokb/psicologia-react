@@ -16,6 +16,8 @@ import ConsultaFechamento from './routes/consultaFechamento';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
 import Home from './routes/home';
+import '../styles/style.css'
+
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Spinner, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Mensagem from "./components/mensagem";
 
@@ -36,28 +36,37 @@ export default function Login() {
     };
 
     return (
-        <Container>
-            <Stack gap={1}>
-                <div className="p-4"></div>
-                <div className="p-5"></div>
-            </Stack>
-            <Row className="justify-content-center">
-                <Col md="auto">
-                    <form onSubmit={criarLogin}>
-                        <h3>Login</h3>
-                        <Stack direction="vertical" gap={1}>
-                            <Form.Label>Faça o login com seu usuário e senha:</Form.Label>
-                            <Form.Group className="mb-2" controlId="usuarioId">
-                                <Form.Control type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Usuário" />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="senhaId">
-                                <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
-                            </Form.Group>
-                            <Button variant="dark" as="input" type="submit" value={"Logar"} />
-                        </Stack>
-                    </form>
-                </Col>
-            </Row>
-        </Container>
+        <>
+            {
+                mutation.isLoading ? (
+                    <div className="overlay d-flex justify-content-center" >
+                        <Spinner animation="border" role="status" />
+                    </div>
+                ) : (
+                    <div className="overlay d-flex justify-content-center" >
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <form onSubmit={criarLogin}>
+                                        <h3>Login</h3>
+                                        <Stack direction="vertical" gap={1}>
+                                            <Form.Label>Faça o login com seu usuário e senha:</Form.Label>
+                                            <Form.Group className="mb-2" controlId="usuarioId">
+                                                <Form.Control type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Usuário" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3" controlId="senhaId">
+                                                <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
+                                            </Form.Group>
+                                            <Button variant="dark" as="input" type="submit" value={"Logar"} />
+                                        </Stack>
+                                    </form>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                )
+            }
+        </>
+
     )
 }

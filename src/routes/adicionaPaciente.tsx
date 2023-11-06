@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, InputGroup, Row, Spinner } from "react-bootstrap";
 import DadosDoPaciente from "../components/dadosDoPaciente";
 import Mensagem from "../components/mensagem";
 
@@ -57,34 +57,42 @@ export default function AdicionaPaciente() {
 
   return (
     <>
-      <Row data-bs-theme="dark">
-        <Col md="auto">
-          <form onSubmit={criarPaciente}>
-            <>
-              < InputGroup className="mb-0 p-0">
-                <InputGroup.Text>Nome: </InputGroup.Text>
-                <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
-              </InputGroup>
-              <InputGroup className="mb-0">
-                <InputGroup.Text>Endereço: </InputGroup.Text>
-                <Form.Control type="text" onChange={(e) => setEndereco(e.target.value)} />
-              </InputGroup>
-              <DadosDoPaciente
-                setValorPorSessao={setValorPorSessao}
-                mes={mes}
-                setMes={setMes}
-                setAno={setAno}
-                tipo={tipo}
-                setTipo={setTipo}
-                dataDaSessao={datasDasSessoes}
-                setDataDaSessao={setDataDaSessao}
-                visivel={true}
-              />
-              <Button variant="dark" as="input" type="submit" value={"Salvar"} />
-            </>
-          </form>
-        </Col>
-      </Row >
+      {
+        mutation.isLoading ? (
+          <div className="overlay d-flex justify-content-center" >
+            <Spinner animation="border" role="status" />
+          </div>
+        ) : (
+          <Row data-bs-theme="dark">
+            <Col md="auto">
+              <form onSubmit={criarPaciente}>
+                <>
+                  < InputGroup className="mb-0 p-0">
+                    <InputGroup.Text>Nome: </InputGroup.Text>
+                    <Form.Control type="text" onChange={(e) => setNome(e.target.value)} />
+                  </InputGroup>
+                  <InputGroup className="mb-0">
+                    <InputGroup.Text>Endereço: </InputGroup.Text>
+                    <Form.Control type="text" onChange={(e) => setEndereco(e.target.value)} />
+                  </InputGroup>
+                  <DadosDoPaciente
+                    setValorPorSessao={setValorPorSessao}
+                    mes={mes}
+                    setMes={setMes}
+                    setAno={setAno}
+                    tipo={tipo}
+                    setTipo={setTipo}
+                    dataDaSessao={datasDasSessoes}
+                    setDataDaSessao={setDataDaSessao}
+                    visivel={true}
+                  />
+                  <Button variant="dark" as="input" type="submit" value={"Salvar"} />
+                </>
+              </form>
+            </Col>
+          </Row >
+        )
+      }
     </>
   )
 }

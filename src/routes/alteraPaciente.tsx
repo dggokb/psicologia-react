@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import { Accordion, Form, InputGroup } from "react-bootstrap";
+import { Accordion, Form, InputGroup, Spinner } from "react-bootstrap";
 import BuscaDePacientePorNome from "../components/buscaDePacientePorNome";
 import DadosDoPaciente from "../components/dadosDoPaciente";
 import Mensagem from "../components/mensagem";
@@ -63,48 +63,58 @@ export default function AlteraPaciente() {
   };
 
   return (
-    <Accordion data-bs-theme="dark">
-      <BuscaDePacientePorNome setNomeParaBusca={setNome} />
-      {data && (
-        <>
-          {data?.data.map((dado) => (
-            <Accordion.Item eventKey={dado.id} key={dado.id}>
-              <Accordion.Header onClick={() => {
-                setId(dado.id)
-                setNome(dado.nome)
-                setEndereco(dado.endereco)
-              }}> {dado.nome}</Accordion.Header>
-              <Accordion.Body>
-                <form onSubmit={criarPaciente}>
-                  <>
-                    < InputGroup className="mb-0 p-0">
-                      <InputGroup.Text>Nome: </InputGroup.Text>
-                      <Form.Control type="text" defaultValue={dado.nome} onChange={(e) => setNome(e.target.value)} />
-                    </InputGroup>
-                    <InputGroup className="mb-0">
-                      <InputGroup.Text>Endereço: </InputGroup.Text>
-                      <Form.Control type="text" defaultValue={dado.endereco} onChange={(e) => setEndereco(e.target.value)} />
-                    </InputGroup>
-                    <DadosDoPaciente
-                      setValorPorSessao={setValorPorSessao}
-                      mes={mes}
-                      setMes={setMes}
-                      setAno={setAno}
-                      tipo={tipo}
-                      setTipo={setTipo}
-                      dataDaSessao={datasDasSessoes}
-                      setDataDaSessao={setDataDaSessao}
-                      visivel={true} />
-                    <ModalDeConfirmacao show={show}
-                      setShow={setShow}
-                      onClick={criarPaciente} />
-                  </>
-                </form>
-              </Accordion.Body>
-            </Accordion.Item>
-          ))}
-        </>
-      )}
-    </Accordion>
+    <>
+      {
+        mutation.isLoading ? (
+          <div className="overlay d-flex justify-content-center" >
+            <Spinner animation="border" role="status" />
+          </div>
+        ) : (
+          <Accordion data-bs-theme="dark">
+            <BuscaDePacientePorNome setNomeParaBusca={setNome} />
+            {data && (
+              <>
+                {data?.data.map((dado) => (
+                  <Accordion.Item eventKey={dado.id} key={dado.id}>
+                    <Accordion.Header onClick={() => {
+                      setId(dado.id)
+                      setNome(dado.nome)
+                      setEndereco(dado.endereco)
+                    }}> {dado.nome}</Accordion.Header>
+                    <Accordion.Body>
+                      <form onSubmit={criarPaciente}>
+                        <>
+                          < InputGroup className="mb-0 p-0">
+                            <InputGroup.Text>Nome: </InputGroup.Text>
+                            <Form.Control type="text" defaultValue={dado.nome} onChange={(e) => setNome(e.target.value)} />
+                          </InputGroup>
+                          <InputGroup className="mb-0">
+                            <InputGroup.Text>Endereço: </InputGroup.Text>
+                            <Form.Control type="text" defaultValue={dado.endereco} onChange={(e) => setEndereco(e.target.value)} />
+                          </InputGroup>
+                          <DadosDoPaciente
+                            setValorPorSessao={setValorPorSessao}
+                            mes={mes}
+                            setMes={setMes}
+                            setAno={setAno}
+                            tipo={tipo}
+                            setTipo={setTipo}
+                            dataDaSessao={datasDasSessoes}
+                            setDataDaSessao={setDataDaSessao}
+                            visivel={true} />
+                          <ModalDeConfirmacao show={show}
+                            setShow={setShow}
+                            onClick={criarPaciente} />
+                        </>
+                      </form>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))}
+              </>
+            )}
+          </Accordion>
+        )
+      }
+    </>
   )
 }
