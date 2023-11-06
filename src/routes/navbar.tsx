@@ -26,6 +26,11 @@ export default function BarraDeNavegacao() {
                         </div>
                         <div className="p-2">
                             <Nav.Item>
+                                <Nav.Link as={Link} to="alterar">Alterar</Nav.Link>
+                            </Nav.Item>
+                        </div>
+                        <div className="p-2">
+                            <Nav.Item>
                                 <Nav.Link as={Link} to="fechamento">Fechamento</Nav.Link>
                             </Nav.Item>
                         </div>

@@ -11,6 +11,7 @@ import Logout from './components/logout';
 import Login from './login';
 import AdicionaPaciente from './routes/adicionaPaciente';
 import AdicionaSessoes from './routes/adicionaSessoes';
+import AlteraPaciente from './routes/alteraPaciente';
 import ConsultaFechamento from './routes/consultaFechamento';
 import ConsultaPacientes from './routes/consultaPacientes';
 import ErrorPage from './routes/error-page';
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "sessoes",
         element: <AdicionaSessoes />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "alterar",
+        element: <AlteraPaciente />,
         errorElement: <ErrorPage />
       },
       {
