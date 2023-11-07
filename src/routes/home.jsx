@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import BarraDeNavegacao from "./navbar";
 import useValidarToken from "../hooks/useValidarToken";
+import BarraDeNavegacao from "./navbar";
+import imagem from "../imagens/imagem.png"
 
 export default function Home() {
     useValidarToken();
@@ -8,6 +9,9 @@ export default function Home() {
         <>
             <div>
                 <BarraDeNavegacao />
+                <div className="overlay d-flex justify-content-center" >
+                    {/* <img src={imagem}/> */}
+                </div>
                 <Outlet />
             </div>
         </>

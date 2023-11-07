@@ -74,7 +74,7 @@ export default function AlteraPaciente() {
             <BuscaDePacientePorNome setNomeParaBusca={setNome} />
             {data && (
               <>
-                {data?.data.map((dado) => (
+                {data.data.map((dado) => (
                   <Accordion.Item eventKey={dado.id} key={dado.id}>
                     <Accordion.Header onClick={() => {
                       setId(dado.id)

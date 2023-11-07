@@ -48,7 +48,7 @@ export default function ConsultaFechamento() {
               <BuscaDePacientePorNome setNomeParaBusca={setNome} />
               {data && (
                 <>
-                  {data?.data.map((dado) => {
+                  {data.data.map((dado) => {
                     return (
                       <Accordion.Item eventKey={dado.id} key={dado.id}>
                         <Accordion.Header onClick={() => {
