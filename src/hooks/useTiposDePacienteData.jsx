@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Mensagem from "../components/mensagem";
 
-const API_URL = 'http://localhost:8080/paciente/tipo'
+const API_URL = 'http://18.230.187.245:8080/psicologia-0.3.0/paciente/tipo'
 const token = localStorage.getItem("tokenDoUsuario");
 
 export function useTiposDePacienteData() {
