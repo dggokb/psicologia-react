@@ -4,7 +4,7 @@ import Mensagem from "../components/mensagem";
 
 export function usePacienteData(nome) {
 
-  const API_URL = 'http://18.230.187.245:8080/psicologia-0.3.0/paciente/consultar';
+  const API_URL = 'https://18.230.187.245:8080/psicologia-0.3.0/paciente/consultar';
   const token = localStorage.getItem("tokenDoUsuario");
   const usuarioId = localStorage.getItem("usuario");
   const config = {
