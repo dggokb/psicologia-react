@@ -32,7 +32,7 @@ export default function AdicionaSessoes() {
   const mutation = useMutation({
     mutationFn: async (dadosParaCriacao) => {
       try {
-        return await axios.post("https://18.230.187.245:8080/psicologia-0.3.0/paciente", dadosParaCriacao, config)
+        return await axios.post("http://18.230.188.37:8080/psicologia-0.3.0/paciente", dadosParaCriacao, config)
       } catch (error) {
         Mensagem.exibirFalha(error.response.data.massage)
       }
