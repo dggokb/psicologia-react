@@ -10,7 +10,7 @@ export default function Home() {
             <div>
                 <BarraDeNavegacao />
                 <div className="overlay d-flex justify-content-center" >
-                    {/* <img src={imagem}/> */}
+                    {/* <img src={imagem}git /> */}
                 </div>
                 <Outlet />
             </div>

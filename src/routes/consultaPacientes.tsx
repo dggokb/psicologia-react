@@ -10,12 +10,6 @@ export default function ConsultaPacientes() {
 
   return (
     <>
-      {
-        isLoading ? (
-          <div className="overlay d-flex justify-content-center" >
-            <Spinner animation="border" role="status" />
-          </div>
-        ) : (
           <Accordion data-bs-theme="dark">
             <BuscaDePacientePorNome setNomeParaBusca={setNome} />
             {data && (
@@ -77,8 +71,6 @@ export default function ConsultaPacientes() {
               </>
             )}
           </Accordion>
-        )
-      }
     </>
   )
 }

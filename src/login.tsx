@@ -12,7 +12,7 @@ export default function Login() {
     const mutation = useMutation({
         mutationFn: async (dadosParaCriacao) => {
             try {
-                return await axios.post("http://18.230.188.37:8080/psicologia-0.3.0/auth/login", dadosParaCriacao);
+                return await axios.post("http://18.230.188.37:8080/psicologia-0.3.0/auth/login/", dadosParaCriacao);
             } catch (error) {
                 Mensagem.exibirFalha(error.response.data.massage)
             }
