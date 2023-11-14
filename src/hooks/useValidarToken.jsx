@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function useValidarToken() {
     const navigate = useNavigate();
     const token = localStorage.getItem("tokenDoUsuario");
-    const API_URL = 'https://18.230.188.37:8443/psicologia-0.3.0/auth/validar';
+    const API_URL = 'http://18.230.188.37:8080/psicologia-0.3.0/auth/validar';
     const config = {
         headers: {
             'Accept': 'application/json',

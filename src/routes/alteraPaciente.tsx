@@ -35,7 +35,7 @@ export default function AlteraPaciente() {
   const mutation = useMutation({
     mutationFn: async (dadosParaCriacao) => {
       try {
-        return await axios.put("https://18.230.188.37:8443/psicologia-0.3.0/paciente", dadosParaCriacao, config)
+        return await axios.put("http://18.230.188.37:8080/psicologia-0.3.0/paciente", dadosParaCriacao, config)
       } catch (error) {
         Mensagem.exibirFalha(error.response.data.massage)
       }

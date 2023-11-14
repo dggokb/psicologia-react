@@ -3,7 +3,7 @@ import axios from "axios";
 import Mensagem from "../components/mensagem";
 
 export function useMesData() {
-  const API_URL = 'https://18.230.188.37:8443/psicologia-0.3.0/mes'
+  const API_URL = 'http://18.230.188.37:8080/psicologia-0.3.0/mes'
   const token = localStorage.getItem("tokenDoUsuario");
   const config = {
     headers: {
